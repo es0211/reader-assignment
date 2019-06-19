@@ -1,0 +1,31 @@
+import java.util.Scanner;
+import java.io.*;
+public class reader{
+    public void read(){
+        System.out.print('\u000C');
+
+        
+        File f=new File("quiz responses.csv");
+        try {
+            Scanner input =new Scanner(f);
+            input.nextLine();
+            String[] anskey = input.nextLine().split(",");
+
+            while (input.hasNext()){
+                String str=input.nextLine();
+                String[] ans=str.split(",");
+                int x=0;
+                for(int i=1;i<anskey.length; i++){
+                    if(anskey[i].equals (ans[i])){
+                        x++;
+                    }
+                }
+                System.out.println(ans[0] +" " + x + "/8");
+            }
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+    }
+}
